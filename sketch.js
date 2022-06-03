@@ -1,4 +1,4 @@
-var arr[];
+var arr;
 var pos; //current position we are looking at
 var testPos; //second position to be tested
 var endPos; //last position needed to be tested
@@ -7,16 +7,16 @@ var endPos; //last position needed to be tested
 function setup() {
   createCanvas(400, 400);
   background(0);
-  arr = randomArray(10);
+  arr = randomArray(50);
 
   pos = 0;
   testPos = pos + 1;
   endPos = arr.length - 1;
 }
 
+
 function draw() {
   background(0);
-  frameRate(5);
   
   if(endPos == 0){
     displayArray(arr, -1, -1, -1);
@@ -39,29 +39,32 @@ function draw() {
   }
 }
 
-function swap(int[] arr, int i0, int i1) {
-  int t = arr[i0];
+
+function swap(arr, i0, i1) {
+  var t = arr[i0];
   arr[i0] = arr[i1];
   arr[i1] = t;
 }//swap
 
-int[] randomArray(int num) {
-  int[] values = new int[num];
 
-  for (int i=0; i<values.length; i++) {
-    values[i] = int(random(100, 400));
+function randomArray(num) {
+  var values = new Array(num);
+
+  for (var i = 0; i < values.length; i++) {
+    values[i] = random(100, 400);
   }//random value loop
+  
   return values;
 }//randomArray
 
 
-function displayArray(var[] arr, var p, var tp, var sp) {
+function displayArray(arr, p, tp, sp) {
   var barWidth = width / arr.length;
   var x = 0;
   var y = 0;
   noStroke();
   
-  for (int i=0; i<arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     y = height - arr[i];
     if (i == p ) {
       fill(230, 0, 230);
